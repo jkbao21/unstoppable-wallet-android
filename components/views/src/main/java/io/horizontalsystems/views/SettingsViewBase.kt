@@ -30,13 +30,17 @@ abstract class SettingsViewBase @JvmOverloads constructor(context: Context, attr
         settingsIcon.setImageDrawable(drawable)
     }
 
-    fun setListPosition(listPosition: ListPosition){
+    fun setListPosition(listPosition: ListPosition) {
         findViewById<View>(R.id.frame)?.let {
             it.setBackgroundResource(listPosition.getBackground())
         }
         findViewById<View>(R.id.bottomBorder)?.let {
             it.isVisible = listPosition == ListPosition.First || listPosition == ListPosition.Middle
         }
+    }
+
+    fun setListPosition(position: Int) {
+        setListPosition(ListPosition.getListPosition(position))
     }
 
     override fun onAttachedToWindow() {
@@ -48,11 +52,11 @@ abstract class SettingsViewBase @JvmOverloads constructor(context: Context, attr
     }
 }
 
-sealed class ListPosition{
-    object First: ListPosition()
-    object Middle: ListPosition()
-    object Last: ListPosition()
-    object Single: ListPosition()
+enum class ListPosition(val id: Int) {
+    Single(0),
+    First(1),
+    Middle(2),
+    Last(3);
 
     fun getBackground(): Int {
         return when (this) {
@@ -63,9 +67,12 @@ sealed class ListPosition{
         }
     }
 
-    companion object{
+    companion object {
+        private val map = values().associateBy(ListPosition::id)
+
+        fun getListPosition(id: Int): ListPosition = map[id] ?: Middle
         fun getListPosition(size: Int, position: Int): ListPosition {
-            return when  {
+            return when {
                 size == 1 -> Single
                 position == 0 -> First
                 position == size - 1 -> Last

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -19,12 +20,13 @@ import io.horizontalsystems.bankwallet.core.BaseFragment
 import io.horizontalsystems.bankwallet.modules.settings.notifications.bottommenu.BottomNotificationMenu
 import io.horizontalsystems.bankwallet.modules.settings.notifications.bottommenu.NotificationMenuMode
 import io.horizontalsystems.bankwallet.ui.extensions.createTextView
-import io.horizontalsystems.bankwallet.ui.helpers.TextHelper
 import io.horizontalsystems.chartview.Chart
 import io.horizontalsystems.chartview.models.PointInfo
 import io.horizontalsystems.core.findNavController
 import io.horizontalsystems.core.helpers.DateHelper
 import io.horizontalsystems.xrateskit.entities.ChartType
+import kotlinx.android.synthetic.main.coin_market.*
+import kotlinx.android.synthetic.main.coin_price_change.*
 import kotlinx.android.synthetic.main.fragment_rate_chart.*
 import java.math.BigDecimal
 import java.util.*
@@ -178,7 +180,7 @@ class RateChartFragment : BaseFragment(), Chart.Listener, TabLayout.OnTabSelecte
         presenterView.showMarketInfo.observe(viewLifecycleOwner, Observer { item ->
             coinRateLast.text = formatter.formatFiat(item.rateValue.value, item.rateValue.currency.symbol, 2, 4)
 
-            coinMarketCap.apply {
+            marketCapValue.apply {
                 if (item.marketCap.value > BigDecimal.ZERO) {
                     text = formatFiatShortened(item.marketCap.value, item.marketCap.currency.symbol)
                 } else {
@@ -209,19 +211,19 @@ class RateChartFragment : BaseFragment(), Chart.Listener, TabLayout.OnTabSelecte
                 }
             }
 
-            startDateValue.apply {
-                text = item.startDate ?: getString(R.string.NotAvailable)
-                isEnabled = !item.startDate.isNullOrEmpty()
-            }
+            categoryValue.text = "Payments"
 
-            websiteValue.apply {
-                item.website?.let {
-                    text = TextHelper.getUrl(it)
-                } ?: run {
-                    isEnabled = false
-                    text = getString(R.string.NotAvailable)
-                }
-            }
+            moveMarker(marker24h, 50f, 100f)
+            moveMarker(markerWeek, 20f, 200f)
+
+//            websiteValue.apply {
+//                item.website?.let {
+//                    text = TextHelper.getUrl(it)
+//                } ?: run {
+//                    isEnabled = false
+//                    text = getString(R.string.NotAvailable)
+//                }
+//            }
         })
 
         presenterView.setSelectedPoint.observe(viewLifecycleOwner, Observer { item ->
@@ -292,6 +294,13 @@ class RateChartFragment : BaseFragment(), Chart.Listener, TabLayout.OnTabSelecte
             toolbar.menu.findItem(R.id.menuFavorite).isVisible = !it
             toolbar.menu.findItem(R.id.menuUnfavorite).isVisible = it
         })
+    }
+
+    private fun moveMarker(markerView: ImageView, price: Float, max: Float) {
+        val percent = 100 * price / max
+        val coordinate = percent / 100 * priceRange24h.width
+
+        markerView.animate().translationX(coordinate)
     }
 
     private fun formatFiatShortened(value: BigDecimal, symbol: String): String {

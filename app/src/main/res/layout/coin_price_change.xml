@@ -1,0 +1,132 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="24dp"
+    android:background="@drawable/background_round_16"
+    android:backgroundTint="@color/lawrence"
+    android:padding="16dp"
+    app:layout_constraintEnd_toEndOf="@id/endGuideline"
+    app:layout_constraintStart_toStartOf="@id/startGuideline"
+    app:layout_constraintTop_toBottomOf="@id/performanceTitle">
+
+    <ImageView
+        android:id="@+id/marker24h"
+        android:layout_width="wrap_content"
+        android:layout_height="8dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_price_range_marker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/priceRange24h"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginTop="4dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/gradient_price_range"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/marker24h" />
+
+    <TextView
+        android:id="@+id/priceRangeMin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="$19,837.65"
+        android:textColor="@color/bran"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/priceRange24h" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="24h Range"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/priceRangeMax"
+        app:layout_constraintStart_toEndOf="@+id/priceRangeMin"
+        app:layout_constraintTop_toBottomOf="@id/priceRange24h" />
+
+    <TextView
+        android:id="@+id/priceRangeMax"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="$23,682.14"
+        android:textColor="@color/bran"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/priceRange24h" />
+
+    <View
+        android:id="@+id/rangeDivider"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/steel_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/priceRangeMin" />
+
+    <!--  Second line  -->
+
+    <ImageView
+        android:id="@+id/markerWeek"
+        android:layout_width="wrap_content"
+        android:layout_height="8dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_price_range_marker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rangeDivider" />
+
+    <ImageView
+        android:id="@+id/priceRangeWeek"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginTop="4dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/gradient_price_range"
+        app:layout_constraintTop_toBottomOf="@id/markerWeek" />
+
+    <TextView
+        android:id="@+id/priceRangeWeekMin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="$105"
+        android:textColor="@color/bran"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/priceRangeWeek" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="52w Range"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/priceRangeWeekMax"
+        app:layout_constraintStart_toEndOf="@+id/priceRangeWeekMin"
+        app:layout_constraintTop_toBottomOf="@id/priceRangeWeek" />
+
+    <TextView
+        android:id="@+id/priceRangeWeekMax"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="$23,682.14"
+        android:textColor="@color/bran"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/priceRangeWeek" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

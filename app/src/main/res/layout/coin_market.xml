@@ -1,0 +1,176 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="24dp"
+    android:background="@drawable/background_round_16"
+    android:backgroundTint="@color/lawrence"
+    android:padding="16dp"
+    app:layout_constraintEnd_toEndOf="@id/endGuideline"
+    app:layout_constraintStart_toStartOf="@id/startGuideline"
+    app:layout_constraintTop_toBottomOf="@id/performanceTitle">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/middleGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5013193" />
+
+    <TextView
+        android:id="@+id/marketCap"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Market Cap"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/middleGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/marketCapBorder"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/steel_20"
+        app:layout_constraintEnd_toEndOf="@id/middleGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/marketCap" />
+
+    <TextView
+        android:id="@+id/marketCapValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="$178.8Bn"
+        android:textColor="@color/bran"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/marketCapBorder" />
+
+    <TextView
+        android:id="@+id/marketCapPercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="+34,56%"
+        android:textColor="@color/remus"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/marketCapValue"
+        app:layout_constraintStart_toEndOf="@+id/marketCapValue"
+        app:layout_constraintTop_toTopOf="@+id/marketCapValue" />
+
+    <!--   Right   -->
+
+    <TextView
+        android:id="@+id/volume"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="Volume (24h)"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/middleGuideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/volumeBorder"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/steel_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/middleGuideline"
+        app:layout_constraintTop_toBottomOf="@id/volume" />
+
+    <TextView
+        android:id="@+id/volumeValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:text="$2.32B"
+        android:textColor="@color/bran"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/middleGuideline"
+        app:layout_constraintTop_toTopOf="@id/volumeBorder" />
+
+    <!--  Second line  -->
+
+    <TextView
+        android:id="@+id/circulation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="In Circulation"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/middleGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/marketCapValue" />
+
+    <View
+        android:id="@+id/circulationBorder"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/steel_20"
+        app:layout_constraintEnd_toEndOf="@id/middleGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/circulation" />
+
+    <TextView
+        android:id="@+id/circulationValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="18.4B BTC"
+        android:textColor="@color/bran"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/circulationBorder" />
+
+    <!--  Right side -->
+
+    <TextView
+        android:id="@+id/totalSupply"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:text="Total Supply"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/middleGuideline"
+        app:layout_constraintTop_toTopOf="@id/volumeValue" />
+
+    <View
+        android:id="@+id/totalSupplyBorder"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/steel_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/middleGuideline"
+        app:layout_constraintTop_toBottomOf="@id/totalSupply" />
+
+    <TextView
+        android:id="@+id/totalSupplyValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:text="21B BTC"
+        android:textColor="@color/bran"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/middleGuideline"
+        app:layout_constraintTop_toTopOf="@id/totalSupplyBorder" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,7 +30,6 @@ data class MarketInfoViewItem(
         val volume: CurrencyValue,
         val supply: RateChartModule.CoinCodeWithValue,
         val maxSupply: RateChartModule.CoinCodeWithValue?,
-        val startDate: String?,
         val website: String?,
         val timestamp: Long
 )
@@ -60,7 +59,7 @@ class RateChartViewFactory {
                 CurrencyValue(currency, marketInfo.volume),
                 RateChartModule.CoinCodeWithValue(coinCode, marketInfo.supply),
                 CoinInfoMap.data[coinCode]?.supply?.let { RateChartModule.CoinCodeWithValue(coinCode, it) },
-                CoinInfoMap.data[coinCode]?.startDate,
+                // CoinInfoMap.data[coinCode]?.startDate,
                 CoinInfoMap.data[coinCode]?.website,
                 marketInfo.timestamp
         )

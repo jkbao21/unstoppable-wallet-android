@@ -8,6 +8,9 @@ import java.util.*
 sealed class CoinType : Parcelable {
     @Parcelize
     object Bitcoin : CoinType()
+    
+    @Parcelize
+    object Electra : CoinType()
 
     @Parcelize
     object Litecoin : CoinType()
@@ -57,6 +60,7 @@ sealed class CoinType : Parcelable {
     val title: String
         get() = when (this) {
             is Bitcoin -> "Bitcoin"
+            is Electra -> "Electra"
             is Litecoin -> "Litecoin"
             is BitcoinCash -> "BitcoinCash"
             else -> ""
@@ -71,7 +75,7 @@ sealed class CoinType : Parcelable {
 
     val predefinedAccountType: PredefinedAccountType
         get() = when (this) {
-            Bitcoin, Litecoin, BitcoinCash, Dash, Ethereum, is Erc20 -> PredefinedAccountType.Standard
+            Bitcoin, Electra, Litecoin, BitcoinCash, Dash, Ethereum, is Erc20 -> PredefinedAccountType.Standard
             is Binance -> PredefinedAccountType.Binance
             Zcash -> PredefinedAccountType.Zcash
         }
@@ -80,7 +84,7 @@ sealed class CoinType : Parcelable {
         get() = this is Ethereum || this is Erc20
 
     fun canSupport(accountType: AccountType) = when (this) {
-        Bitcoin, Litecoin, BitcoinCash, Dash, Ethereum, is Erc20 -> {
+        Bitcoin, Electra, Litecoin, BitcoinCash, Dash, Ethereum, is Erc20 -> {
             accountType is AccountType.Mnemonic && accountType.words.size == 12 && accountType.salt == null
         }
         is Binance -> {
@@ -94,6 +98,7 @@ sealed class CoinType : Parcelable {
     fun serialize(): String {
         return when (this) {
             Bitcoin -> bitcoin
+            Electra -> electra
             Litecoin -> litecoin
             BitcoinCash -> bitcoinCash
             Dash -> dash
@@ -106,6 +111,7 @@ sealed class CoinType : Parcelable {
 
     companion object {
         const val bitcoin = "bitcoin"
+        const val electra = "electra"
         const val litecoin = "litecoin"
         const val bitcoinCash = "bitcoincash"
         const val dash = "dash"
@@ -121,6 +127,7 @@ sealed class CoinType : Parcelable {
 
             return when (parts.firstOrNull()) {
                 bitcoin -> Bitcoin
+                electra -> Electra
                 litecoin -> Litecoin
                 bitcoinCash -> BitcoinCash
                 dash -> Dash

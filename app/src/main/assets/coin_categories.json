@@ -45,6 +45,21 @@
             "rating": ""
         },
         {
+            "code": "ECA",
+            "name": "Electra",
+            "categories": ["blockchain"],
+            "active": true,
+            "description": "",
+            "details": {
+                "website": "http://www.electracore.weebly.com",
+                "whitepaper": "https://github.com/electra01/Electra-Whitepaper/blob/master/Electra%20Whitepaper%20v3.pdf",
+                "twitter": "",
+                "reddit": "https://www.reddit.com/r/Electracoin/",
+                "telegram": "",
+		"discord": ""
+            }, "rating": ""
+        },
+        {
             "code": "ETH",
             "name": "Ethereum",
             "categories": ["blockchain"],
